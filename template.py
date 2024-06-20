@@ -23,7 +23,10 @@ list_of_files=[
     "app.py",
     "Dockerfile",
     "requirements.txt",
-    "setup.py"
+    "setup.py",
+    "notebook/EDA.ipynb",
+    "notebook/MODELTRAINING.ipynb",
+    "notebook/data/raw_data/"
 ]
 
 for filepath in list_of_files:
