@@ -26,6 +26,7 @@ list_of_files=[
     "setup.py",
     "notebook/EDA.ipynb",
     "notebook/MODELTRAINING.ipynb",
+    "notebook/MODEL_trans.ipynb",
     "notebook/data/raw_data/"
 ]
 
