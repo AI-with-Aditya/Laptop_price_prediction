@@ -11,43 +11,26 @@ load_dotenv()
 host=os.getenv("host")
 user=os.getenv("user")
 password=os.getenv("password")
-db_train=os.getenv("db_train")
-db_test=os.getenv("db_test")
+db=os.getenv("db")
 
 
-
-def read_sql_train():
-    logging.info("Reading SQL database which is train")
+def read_sql_data():
+    logging.info("Reading SQL database started")
     try:
-        mydb_train=pymysql.connect(
+        mydb=pymysql.connect(
             host=host,
             user=user,
             password=password,
-            db=db_train
+            db=db
         )
-        
-        logging.info("Connection Established: %s",mydb_train)
-        df_train=pd.read_sql_query('Select * from laptops_train;',mydb_train)
-        return df_train 
-        
+        logging.info("Connection Established",mydb)
+        df=pd.read_sql_query('Select * from laptop_price',mydb)
+        print(df.head())
+
+        return df
+
+
+
     except Exception as ex:
         raise CustomException(ex)
-
-def read_sql_test():
-    logging.info("Reading SQL database which is train")
-    try:
-        mydb_test=pymysql.connect(
-            host=host,
-            user=user,
-            password=password,
-            db=db_test
-        )
-        
-        logging.info("Connection Established: %s", mydb_test)
-        df_test=pd.read_sql_query('Select * from laptops_test;',mydb_test)
-
-        return df_test 
-               
-    except Exception as ex:
-        raise CustomException(ex)
-
+    
